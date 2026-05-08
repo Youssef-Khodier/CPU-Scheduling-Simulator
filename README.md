@@ -114,16 +114,14 @@ The app rejects duplicate process IDs, burst time `0`, arrival time `-1`, quantu
 
 ## Screenshots
 
-The `screenshots/` folder contains desktop-aspect browser-preview captures for the main workflow:
+The `screenshots/` folder contains the captured UI states for the main workflow:
 
 - `screenshots/01-home-input.png`: main interface before running.
-- `screenshots/02-normal-case-input.png`: Normal Case loaded with processes and quantum.
-- `screenshots/03-round-robin-results.png`: Round Robin Gantt chart, metrics table, and averages.
-- `screenshots/04-sjf-non-preemptive-results.png`: SJF Non-Preemptive Gantt chart, metrics table, and averages.
-- `screenshots/05-sjf-preemptive-srtf-results.png`: SJF Preemptive (SRTF) Gantt chart, metrics table, and averages.
-- `screenshots/06-comparison.png`: comparison table and conclusion.
-- `screenshots/07-invalid-input-validation.png`: validation error for the Invalid Input Case.
-- `screenshots/08-behavior-revealing-case.png`: Behavior-Revealing Case comparison results.
+- `screenshots/02-behavior-round-robin-results.png`: Behavior-Revealing Case Round Robin results.
+- `screenshots/03-behavior-sjf-non-preemptive-results.png`: Behavior-Revealing Case SJF Non-Preemptive results.
+- `screenshots/04-behavior-sjf-preemptive-srtf-results.png`: Behavior-Revealing Case SJF Preemptive (SRTF) results.
+- `screenshots/05-behavior-comparison.png`: Behavior-Revealing Case comparison table and conclusion.
+- `screenshots/06-invalid-input-validation.png`: validation error for the Invalid Input Case.
 
 ## Team Members
 
