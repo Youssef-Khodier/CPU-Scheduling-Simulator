@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Round Robin vs SJF Scheduling Simulator</title>
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Operating Systems Course Project</p>
+        <h1>Round Robin vs SJF Scheduling Simulator</h1>
+        <p class="subtitle">
+          Compare Round Robin (RR), SJF Non-Preemptive, and SJF Preemptive (SRTF) using the same process workload.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel input-panel" aria-labelledby="input-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Workload</p>
+            <h2 id="input-title">Process Input</h2>
+          </div>
+          <button class="secondary-button" id="clearAllTopButton" type="button">Clear All</button>
+        </div>
+
+        <div id="messageBox" class="message-box" role="alert" aria-live="polite" hidden></div>
+
+        <form id="processForm" class="process-form" novalidate>
+          <label>
+            <span>Process ID</span>
+            <input id="pidInput" type="text" placeholder="P1" autocomplete="off" />
+          </label>
+          <label>
+            <span>Arrival Time</span>
+            <input id="arrivalInput" type="number" min="0" step="1" placeholder="0" />
+          </label>
+          <label>
+            <span>Burst Time</span>
+            <input id="burstInput" type="number" min="1" step="1" placeholder="5" />
+          </label>
+          <button class="primary-button" type="submit">Add Process</button>
+        </form>
+
+        <div class="toolbar">
+          <button class="secondary-button" id="removeSelectedButton" type="button">Remove Selected Process</button>
+          <button class="secondary-button" id="clearAllButton" type="button">Clear All</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Select</th>
+                <th>Process ID</th>
+                <th>Arrival Time</th>
+                <th>Burst Time</th>
+              </tr>
+            </thead>
+            <tbody id="processTableBody">
+              <tr>
+                <td colspan="4" class="empty-cell">No processes added yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="controls-grid">
+          <label class="quantum-control">
+            <span>Round Robin Quantum</span>
+            <input id="quantumInput" type="number" min="1" step="1" value="2" />
+          </label>
+          <section class="quick-tests" aria-labelledby="quick-tests-title">
+            <h3 id="quick-tests-title">Quick Test Cases</h3>
+            <div class="sample-buttons" aria-label="Quick test cases">
+              <button class="secondary-button" id="loadNormalButton" type="button">Normal Case</button>
+              <button class="secondary-button" id="loadBehaviorButton" type="button">Behavior-Revealing Case</button>
+              <button class="secondary-button" id="loadInvalidButton" type="button">Invalid Input Case</button>
+              <button class="secondary-button" id="quickClearButton" type="button">Clear All</button>
+            </div>
+          </section>
+        </div>
+
+        <button class="run-button" id="runButton" type="button">Run Comparison</button>
+      </section>
+
+      <section class="results-shell" aria-label="Scheduling results">
+        <div class="tabs" role="tablist" aria-label="Result sections">
+          <button class="tab-button active" data-tab="rr" type="button" role="tab" aria-selected="true">
+            Round Robin Results
+          </button>
+          <button class="tab-button" data-tab="sjfNonPreemptive" type="button" role="tab" aria-selected="false">
+            Non-Preemptive SJF Results
+          </button>
+          <button class="tab-button" data-tab="sjfPreemptive" type="button" role="tab" aria-selected="false">
+            Preemptive SJF (SRTF) Results
+          </button>
+          <button class="tab-button" data-tab="comparison" type="button" role="tab" aria-selected="false">
+            Comparison
+          </button>
+        </div>
+
+        <section class="tab-panel active" id="rrPanel" role="tabpanel">
+          <div class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Round Robin</p>
+                <h2>Round Robin (RR)</h2>
+              </div>
+            </div>
+            <div id="rrResults" class="result-placeholder">
+              Add processes and run the comparison to display Round Robin results.
+            </div>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="sjfNonPreemptivePanel" role="tabpanel">
+          <div class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Shortest Job First</p>
+                <h2>SJF Non-Preemptive</h2>
+              </div>
+            </div>
+            <div id="sjfNonPreemptiveResults" class="result-placeholder">
+              Add processes and run the comparison to display SJF Non-Preemptive results.
+            </div>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="sjfPreemptivePanel" role="tabpanel">
+          <div class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Shortest Remaining Time First</p>
+                <h2>SJF Preemptive (SRTF)</h2>
+              </div>
+            </div>
+            <div id="sjfPreemptiveResults" class="result-placeholder">
+              Add processes and run the comparison to display SJF Preemptive (SRTF) results.
+            </div>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="comparisonPanel" role="tabpanel">
+          <div class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Analysis</p>
+                <h2>Three-Algorithm Comparison</h2>
+              </div>
+            </div>
+            <aside class="note-card" aria-label="SJF Version Note">
+              <h3>SJF Version Note</h3>
+              <p>
+                This project includes both SJF versions. Non-Preemptive SJF selects the shortest arrived
+                process only when the CPU becomes free and then runs it to completion. Preemptive SJF,
+                also called SRTF, always selects the process with the shortest remaining time and may
+                interrupt the current process when a shorter job arrives.
+              </p>
+            </aside>
+            <div id="comparisonResults" class="result-placeholder">
+              Run all three algorithms to compare average metrics.
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="src/model/process.js"></script>
+    <script src="src/model/ganttSegment.js"></script>
+    <script src="src/model/schedulingResult.js"></script>
+    <script src="src/js/metrics.js"></script>
+    <script src="src/js/validation.js"></script>
+    <script src="src/js/roundRobin.js"></script>
+    <script src="src/js/sjfNonPreemptive.js"></script>
+    <script src="src/js/sjfPreemptive.js"></script>
+    <script src="src/js/gantt.js"></script>
+    <script src="src/js/comparison.js"></script>
+    <script src="src/js/app.js"></script>
+  </body>
+</html>
