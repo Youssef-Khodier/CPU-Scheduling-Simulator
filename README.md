@@ -114,7 +114,16 @@ The app rejects duplicate process IDs, burst time `0`, arrival time `-1`, quantu
 
 ## Screenshots
 
-Add screenshots of the three Gantt charts, metrics tables, and comparison section in the `screenshots/` folder after running the app.
+The `screenshots/` folder contains desktop-aspect browser-preview captures for the main workflow:
+
+- `screenshots/01-home-input.png`: main interface before running.
+- `screenshots/02-normal-case-input.png`: Normal Case loaded with processes and quantum.
+- `screenshots/03-round-robin-results.png`: Round Robin Gantt chart, metrics table, and averages.
+- `screenshots/04-sjf-non-preemptive-results.png`: SJF Non-Preemptive Gantt chart, metrics table, and averages.
+- `screenshots/05-sjf-preemptive-srtf-results.png`: SJF Preemptive (SRTF) Gantt chart, metrics table, and averages.
+- `screenshots/06-comparison.png`: comparison table and conclusion.
+- `screenshots/07-invalid-input-validation.png`: validation error for the Invalid Input Case.
+- `screenshots/08-behavior-revealing-case.png`: Behavior-Revealing Case comparison results.
 
 ## Team Members
 
