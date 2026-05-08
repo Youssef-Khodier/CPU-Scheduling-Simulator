@@ -125,10 +125,12 @@ The `screenshots/` folder contains the captured UI states for the main workflow:
 
 ## Team Members
 
-- Team Member 1:
-- Team Member 2:
-- Team Member 3:
-- Team Member 4:
+- يوسف احمد ابراهيم حسيني
+- معاذ صلاح الدين سالم صاوي
+- عمر جابر علي جابر
+- يوسف صلاح خليفة احمد
+- محمد بخيت محمد
+- يحيى وليد رافت يحيى
 
 ## Assumptions and Limitations
 
