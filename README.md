@@ -112,6 +112,26 @@ This case shows Round Robin fairness, SJF Non-Preemptive keeping the first long 
 
 The app rejects duplicate process IDs, burst time `0`, arrival time `-1`, quantum `0`, empty process IDs, and non-numeric arrival or burst values before running any algorithm.
 
+## Required Analysis Questions
+
+- Which algorithm produced the lower average waiting time?
+  - The comparison table identifies the algorithm with the lowest Average WT for the selected workload. In the Behavior-Revealing Case, SJF Preemptive (SRTF) produced the lowest average waiting time.
+- Which algorithm produced the lower average response time?
+  - The comparison table identifies the algorithm with the lowest Average RT for the selected workload. In the Behavior-Revealing Case, SJF Preemptive (SRTF) produced the lowest average response time.
+- Did priority values improve treatment of urgent processes?
+  - Priority values are not part of this simulator because the implemented comparison is between Round Robin, SJF Non-Preemptive, and SJF Preemptive (SRTF). Urgency is represented through arrival time and burst time instead of a priority field.
+- Did SRTF favor short jobs more aggressively?
+  - Yes. SRTF checks the shortest remaining time at every time unit and preempts a longer process when a shorter process arrives, so short jobs are favored more aggressively than in Round Robin or SJF Non-Preemptive.
+- Which algorithm would you recommend for the tested workload, and why?
+  - For the Behavior-Revealing Case, SJF Preemptive (SRTF) is recommended when the goal is minimizing average waiting, turnaround, and response time. Round Robin is recommended when fairness and repeated CPU access are more important than the lowest averages.
+
+## Required Conclusion
+
+- SJF Preemptive (SRTF) performed better on the Behavior-Revealing Case based on the selected average metrics.
+- SRTF gave better average waiting time, average turnaround time, and average response time in the Behavior-Revealing Case. Round Robin gave fair repeated CPU access, while SJF Non-Preemptive avoided preemption but allowed the first long job to delay shorter jobs.
+- The main trade-off is fairness versus efficiency. SRTF improves short-job performance but may delay long jobs and has starvation risk. Round Robin is fairer but depends strongly on the selected quantum.
+- Round Robin appeared fairer in practice because it gives each ready process CPU time repeatedly instead of allowing short jobs to dominate the schedule.
+
 ## Screenshots
 
 The `screenshots/` folder contains the captured UI states for the main workflow:
